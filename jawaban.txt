@@ -1,0 +1,99 @@
+Microsoft Windows [Version 10.0.19045.3570]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\ASUS>cd c:/xampp/mysql/bin
+
+c:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others. 
+MariaDB [(none)]> create database myshop;
+Query OK, 1 row affected (0.006 sec)
+1. Buat database
+MariaDB [(none)]> use myshop
+Database changed
+2. Buat Table
+MariaDB [myshop]> create table user ( id int (20) not null primary key, nama varchar(255), email varchar(255), Password varchar(255));
+Query OK, 0 rows affected (0.095 sec)
+
+MariaDB [myshop]> create table categories ( id int (25), nama varchar (255));
+Query OK, 0 rows affected (0.260 sec)
+
+MariaDB [myshop]> create table items ( id Int (20) not null primary key, name varchar(255), descriptions varchar(255), price int, stock int, category_id int);
+Query OK, 0 rows affected (0.094 sec)
+
+MariaDB [myshop]> show tables;
++------------------+
+| Tables_in_myshop |
++------------------+
+| categories       |
+| items            |
+| user             |
++------------------+
+3 rows in set (0.101 sec)
+
+#. insert table
+MariaDB [myshop]> INSERT INTO user (id, nama, email) VALUES
+    ->     (1, 'john Doe', 'john@doe.com'),
+    ->     (2, 'jhon Doe', 'john@doe.com');
+Query OK, 2 rows affected (0.008 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [myshop]> select * from user;
++----+----------+--------------+----------+
+| id | nama     | email        | Password |
++----+----------+--------------+----------+
+|  1 | john Doe | john@doe.com | NULL     |
+|  2 | jhon Doe | john@doe.com | NULL     |
++----+----------+--------------+----------+
+2 rows in set (0.001 sec)
+
+MariaDB [myshop]> INSERT INTO categories (nama) VALUES
+    -> ('gadget'),
+    -> ('cloth'),
+    -> ('man'),
+    -> ('women'),
+    -> ('branded');
+Query OK, 5 rows affected (0.014 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [myshop]> select * from categories;
++------+---------+
+| id   | nama    |
++------+---------+
+| NULL | gadget  |
+| NULL | cloth   |
+| NULL | man     |
+| NULL | women   |
+| NULL | branded |
++------+---------+
+5 rows in set (0.001 sec)
+
+MariaDB [myshop]> INSERT INTO items (id, name, descriptions) VALUES
+    ->  (1,'Sumsang b50', 'hape keren dari merek Sumsang'),
+    ->  (2, 'Uniklooh', 'baju keren dari brand ternama'),
+    ->  (3, 'IMHO Watch', 'jam tangan anak yang jujur banget');
+Query OK, 3 rows affected (0.008 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [myshop]> select * from items;
++----+-------------+-----------------------------------+-------+-------+-------------+
+| id | name        | descriptions                      | price | stock | category_id |
++----+-------------+-----------------------------------+-------+-------+-------------+
+|  1 | Sumsang b50 | hape keren dari merek Sumsang     |  NULL |  NULL |        NULL |
+|  2 | Uniklooh    | baju keren dari brand ternama     |  NULL |  NULL |        NULL |
+|  3 | IMHO Watch  | jam tangan anak yang jujur banget |  NULL |  NULL |        NULL |
++----+-------------+-----------------------------------+-------+-------+-------------+
+3 rows in set (0.001 sec)
+
+ select id, nama, email from user;
++----+----------+--------------+
+| id | nama     | email        |
++----+----------+--------------+
+|  1 | john Doe | john@doe.com |
+|  2 | jhon Doe | john@doe.com |
++----+----------+--------------+
+2 rows in set (0.001 sec)
